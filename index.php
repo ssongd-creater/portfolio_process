@@ -34,6 +34,7 @@
   <!-- Animation CSS Link -->
   <link rel="stylesheet" href="/schedule/css/animation.css">
 </head>
+
 <body>
   <div class="wrapper">
     <div class="dashboard">
@@ -79,7 +80,7 @@
             <a href="#">More Details</a>
             <i class="fa fa-database"></i>
           </div>
-          
+
         </div>
         <div class="each-pofol">
           <div>
@@ -88,29 +89,48 @@
             </div>
             <div class="each-graph">
               <div class="db_pofol">
-                  <span class="chart" data-percent="86">
-                    <span class="percent"></span>
-                  </span>
+                <span class="chart" data-percent="86">
+                  <span class="percent"></span>
+                </span>
+                <b>DB Project</b>
+                <i class="fa fa-database"></i>
               </div>
               <div class="api_pofol">
                 <span class="chart" data-percent="56">
                   <span class="percent"></span>
                 </span>
+                <b>API Project</b>
+                <i class="fa fa-thermometer-half"></i>
               </div>
               <div class="renewal_pofol">
                 <span class="chart" data-percent="74">
                   <span class="percent"></span>
                 </span>
+                <b>Renewal Project</b>
+                <i class="fa fa-clone"></i>
               </div>
               <div class="planning_pofol">
                 <span class="chart" data-percent="35">
                   <span class="percent"></span>
                 </span>
+                <b>Planning Project</b>
+                <i class="fa fa-bar-chart-o"></i>
               </div>
             </div>
           </div>
         </div>
-        <div class="total-pofol"></div>
+        <div class="total-pofol">
+          <div class="total-chart">
+            <span class="chart" data-percent="35">
+              <span class="percent"></span>
+              <h3>Total Process Rate</h3>
+            </span>
+          </div>
+
+          <div class="total-txt">
+
+          </div>
+        </div>
       </section>
 
       <section class="table-ui">
@@ -173,95 +193,68 @@
     </div>
     <!-- End of Main Dashboard Frame -->
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="/schedule/lib/js/lightslider.js"></script>
-  <script src="js/index.js"></script>
-  <script src="/schedule/lib/js/easypiechart.js"></script>
 
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $(".intro").lightSlider({
-        item:1,
-        pager:false,
-        //슬라이드 밑에 .... 으로 된 선택자를 없애주는 옵션
-        loop:true,
-        slideMargin:0,
-        speed: 400, //ms'
-        auto: true,
-        pause: 3500,
-        mode:'fade',
-        adaptiveHeight:true,
-      });
-    });
-  </script>
+  <!-- Jquery Framework Load -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Plugins Load -->
+  <script src="/schedule/lib/js/lightslider.js"></script>
+  <script src="/schedule/lib/js/easypiechart.js"></script>
+  <!-- Vanilla JS Code Load -->
+  <script src="/schedule/js/index.js"></script>
+  <!-- Jquery Code Load -->
+  <script src="/schedule/js/jquery.index.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+  // startPie('.db_pofol', '#7c41f5', '#c1a5fa');
+  // startPie('.api_pofol', '#ff9062', '#fcc5ae');
+  // startPie('.renewal_pofol', '#3acbe8', '#a2dce8');
+  // startPie('.planning_pofol', '#69c', '#ace');
 
-      function startPie(a,b,c){
-         var chart = window.chart = new EasyPieChart(document.querySelector(a + ' .chart'), {
-          easing: 'easeOutElastic',
-          delay: 3000,
-          barColor: b,
-          trackColor: c,
-          scaleColor: false,
-          lineWidth: 10,
-          trackWidth: 8,
-          lineCap: 'round',
-          onStep: function (from, to, percent) {
-          this.el.children[0].innerHTML = Math.round(percent);
-          }
-        });
-      }
-      startPie('.db_pofol', '#7c41f5', '#c1a5fa');
-      startPie('.api_pofol', '#ff9062', '#fcc5ae');
-      startPie('.renewal_pofol', '#3acbe8', '#a2dce8');
-      startPie('.planning_pofol', '#69c', '#ace');
 
-     
-      // //-----------------------------
-      // var chart = window.chart = new EasyPieChart(document.querySelector('.api_pofol .chart'), {
-      //   easing: 'easeOutElastic',
-      //   delay: 3000,
-      //   barColor: '#ff9062',
-      //   trackColor: '#fcc5ae',
-      //   scaleColor: false,
-      //   lineWidth: 10,
-      //   trackWidth: 8,
-      //   lineCap: 'round',
-      //   onStep: function (from, to, percent) {
-      //     this.el.children[0].innerHTML = Math.round(percent);
-      //   }
-      // });
-      // //-----------------------------
-      //  var chart = window.chart = new EasyPieChart(document.querySelector('.renewal_pofol .chart'), {
-      //   easing: 'easeOutElastic',
-      //   delay: 3000,
-      //   barColor: '#3acbe8',
-      //   trackColor: '#a2dce8',
-      //   scaleColor: false,
-      //   lineWidth: 10,
-      //   trackWidth: 8,
-      //   lineCap: 'round',
-      //   onStep: function (from, to, percent) {
-      //     this.el.children[0].innerHTML = Math.round(percent);
-      //   }
-      // });
-      // //-----------------------------
-      // var chart = window.chart = new EasyPieChart(document.querySelector('.planning_pofol .chart'), {
-      //   easing: 'easeOutElastic',
-      //   delay: 3000,
-      //   barColor: '#69c',
-      //   trackColor: '#ace',
-      //   scaleColor: false,
-      //   lineWidth: 10,
-      //   trackWidth: 8,
-      //   lineCap: 'round',
-      //   onStep: function (from, to, percent) {
-      //     this.el.children[0].innerHTML = Math.round(percent);
-      //   }
-      // });
-    });
+  // //-----------------------------
+  // var chart = window.chart = new EasyPieChart(document.querySelector('.api_pofol .chart'), {
+  //   easing: 'easeOutElastic',
+  //   delay: 3000,
+  //   barColor: '#ff9062',
+  //   trackColor: '#fcc5ae',
+  //   scaleColor: false,
+  //   lineWidth: 10,
+  //   trackWidth: 8,
+  //   lineCap: 'round',
+  //   onStep: function (from, to, percent) {
+  //     this.el.children[0].innerHTML = Math.round(percent);
+  //   }
+  // });
+  // //-----------------------------
+  //  var chart = window.chart = new EasyPieChart(document.querySelector('.renewal_pofol .chart'), {
+  //   easing: 'easeOutElastic',
+  //   delay: 3000,
+  //   barColor: '#3acbe8',
+  //   trackColor: '#a2dce8',
+  //   scaleColor: false,
+  //   lineWidth: 10,
+  //   trackWidth: 8,
+  //   lineCap: 'round',
+  //   onStep: function (from, to, percent) {
+  //     this.el.children[0].innerHTML = Math.round(percent);
+  //   }
+  // });
+  // //-----------------------------
+  // var chart = window.chart = new EasyPieChart(document.querySelector('.planning_pofol .chart'), {
+  //   easing: 'easeOutElastic',
+  //   delay: 3000,
+  //   barColor: '#69c',
+  //   trackColor: '#ace',
+  //   scaleColor: false,
+  //   lineWidth: 10,
+  //   trackWidth: 8,
+  //   lineCap: 'round',
+  //   onStep: function (from, to, percent) {
+  //     this.el.children[0].innerHTML = Math.round(percent);
+  //   }
+  // });
   </script>
+
 </body>
+
 </html>
