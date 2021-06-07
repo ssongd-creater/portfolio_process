@@ -294,7 +294,48 @@ header .gnb a {
   display: flex;
 }
 
-div.total-chart {
+div.total-txt {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+div.total-txt h3 {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0 0 0px 0;
+  color: #555;
+  border-bottom: 1px solid #ccc;
+}
+
+div.total-txt p {
+  font-weight: 300;
+  font-size: 16px;
+  padding: 10px 0;
+}
+
+div.total-txt button {
+  border: 1px solid #f28888;
+  background: #fff;
+  padding: 5px 0px;
+  color: #555;
+  width: 150px;
+}
+
+div.total-txt button:hover {
+  background: #f28888;
+  color: #fff;
+}
+.graph-ui > div.total-pofol > div {
+  height: 100%;
+}
+.graph-ui > div.total-pofol div.total-chart {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   padding: 10px 0;
 }
 
@@ -309,8 +350,9 @@ div.total-chart .chart {
 
 div.total-chart .percent {
   line-height: 0;
-  font-size: 18px;
-  font-weight: 300;
+  font-size: 22px;
+  font-weight: 600;
+  color: #f28888;
 }
 
 div.total-chart .chart canvas {
@@ -318,17 +360,6 @@ div.total-chart .chart canvas {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-
-.graph-ui > div.total-pofol > div {
-  height: 100%;
-}
-.graph-ui > div.total-pofol div.total-chart {
-  width: 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 .graph-ui > div.total-pofol div.total-chart h3 {
