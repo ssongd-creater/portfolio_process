@@ -21,7 +21,7 @@
   echo"
   <script>
     alert('작성이 완료되었습니다');
-    location.href='/schedule/pages/sp_insert_form.php';
+    location.href='/schedule/pages/sp_insert_form.php?key=database';
   </script>
   ";
 ?>

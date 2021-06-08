@@ -149,5 +149,30 @@ $(document).ready(function () {
   startPie();
 });
 
-const abc = window.innerHeight;
-console.log(abc);
+//Open Modal for Input Rates
+//1. 버튼 DOM 저장 = > index.php 133번줄
+const modalBtn = document.querySelector('#open-modal');
+//5.modal변수에 모달박스 DOM 저장
+const modal = document.querySelector('#myModal');
+
+//6. X 버튼 DOM 저장
+const times = document.querySelector('#times');
+
+//4. modalBtn을 클릭했을 때 모달 박스 보이기
+modalBtn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+//7. X버튼 클릭 시 모달창 제거
+// times.onclick = function() {
+//   modal.style.display = "none";
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+//8. 모달 이외 영역 클릭 시 모달창 제거
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
