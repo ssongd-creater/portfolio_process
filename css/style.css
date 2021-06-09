@@ -583,7 +583,7 @@ div.total-chart .chart canvas {
 /* 3. 모달 박스 CSS 작성 => index.js 156번줄 */
 /* The Modal (background) */
 .modal {
-  _display: none; /* Hidden by default */
+  display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 999; /* Sit on top */
   left: 0;
