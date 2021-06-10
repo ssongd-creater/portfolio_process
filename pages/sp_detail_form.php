@@ -52,80 +52,73 @@
       include $_SERVER['DOCUMENT_ROOT']."/schedule/include/header.php";
       ?>
 
-      <section class="graph-ui">
-        <div class="intro">
-          <div class="slide-box">
-            <h2>Database Project Process</h2>
-            <p>데이터베이스 테이블 설계 완료<br>테이블 UI 디자인 완료</p>
-            <a href="#">More Details</a>
-            <i class="fa fa-database"></i>
-          </div>
-          <div class="slide-box">
-            <h2>Database Project Process</h2>
-            <p>API 테이블 설계 완료<br>테이블 UI 디자인 완료</p>
-            <a href="#">More Details</a>
-            <i class="fa fa-database"></i>
-          </div>
-          <div class="slide-box">
-            <h2>Database Project Process</h2>
-            <p>리뉴얼 테이블 설계 완료<br>테이블 UI 디자인 완료</p>
-            <a href="#">More Details</a>
-            <i class="fa fa-database"></i>
-          </div>
-          <div class="slide-box">
-            <h2>Database Project Process</h2>
-            <p>기획 테이블 테이블 설계 완료<br>테이블 UI 디자인 완료</p>
-            <a href="#">More Details</a>
-            <i class="fa fa-database"></i>
-          </div>
+      <section class="graph-ui detail">
 
-        </div>
-        <div class="each-pofol">
-          <div>
-            <div class="each-title">
-              <h3>Each Portfolio Process Rate</h3>
-            </div>
-            <div class="each-graph">
-
-            </div>
-          </div>
-        </div>
         <?php
         include $_SERVER['DOCUMENT_ROOT']."/schedule/include/total_pofol.php";
         ?>
 
+        <div class="each-pofol" id="each-pofol">
+          <div>
+            <div class="each-graph" id="each-graph">
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="detail-board">
+          <div class="board-btns">
+            <a href="#">All</a>
+            <a href="#">Database</a>
+            <a href="#">API</a>
+            <a href="#">Renewal</a>
+            <a href="#">Planning</a>
+          </div>
+
+          <div class="board-table">
+            <ul>
+              <li class="board-title">
+                <span>번호</span>
+                <span>분류</span>
+                <span>제목</span>
+                <span>등록일</span>
+                <span></span>
+              </li>
+
+              <?php
+                include $_SERVER["DOCUMENT_ROOT"]."/connect/db_conn.php"; //db 접속정보 로드
+                $sql = "SELECT * FROM sp_table ORDER BY SP_idx DESC LIMIT 5";
+                $board_result = mysqli_query($dbConn, $sql);
+
+                while($board_row = mysqli_fetch_array($board_result)){
+                  $board_row_idx = $board_row['SP_idx'];
+                  $board_row_cate = $board_row['SP_cate'];
+                  $board_row_tit = $board_row['SP_tit'];
+                  $board_row_reg = $board_row['SP_reg'];
+              ?>
+
+              <li class="board-contents">
+                <span><?=$board_row_idx?></span>
+                <span><?=$board_row_cate?></span>
+                <span><a href="#"><?=$board_row_tit?></a></span>
+                <span><?=$board_row_reg?></span>
+                <span><a href="/schedule/php/sp_delete.php?del_idx=<?=$board_row_idx?>" class="del-btn">삭제</a></span>
+              </li>
+
+              <?php
+                }
+              ?>
+            </ul>
+          </div>
+        </div>
+
       </section>
-      <?php
-        include $_SERVER['DOCUMENT_ROOT']."/schedule/include/table_ui.php";
-      ?>
+
     </div>
     <!-- End of Main Dashboard Frame -->
   </div>
 
-  <!-- 2.모달 박스 UI 제작 => style.css 581번줄-->
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      <!-- <span class="close" id="times">&times;</span>
-      <p>Some text in the Modal..</p> -->
-      <form action="/schedule/php/sp_rate_insert.php" class="rate-form" name="rate_form">
-
-
-      </form>
-      <div class="updateBtnBox">
-        <button type="button" id="updateBtn">Update Rate</button>
-      </div>
-      <script>
-      const updateBtn = document.querySelector('#updateBtn');
-      //const modal = document.querySelector('#myModal');
-      updateBtn.onclick = function() {
-        document.rate_form.submit();
-        modal.style.display = "none";
-      }
-      </script>
-    </div>
 
   </div>
   <!-- Jquery Framework Load -->

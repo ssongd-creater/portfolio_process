@@ -34,8 +34,6 @@ $(function () {
   $(window).ajaxComplete(function () {
   let lWidth = 10;
   let tWidth = 8;
-      
-
   let pieSize = 200;
   let clearSet;
   const winWidth = $(window).width();
@@ -57,8 +55,8 @@ $(function () {
     barColor: '#f28888',
     trackColor: '#edc0c0',
     scaleColor: false,
-    lineWidth: 18,
-    trackWidth: 18,
+    lineWidth: lWidth,
+    trackWidth: tWidth,
     lineCap: 'butt',
     size: pieSize,
     onStep: function (from, to, percent) {
@@ -82,7 +80,7 @@ $(function () {
         
     clearTimeout(clearSet);
     clearSet = setTimeout(function () {
-      $('.total-chart .chart').removeData('easyPiechart').remove();
+      $('.total-chart .chart').removeData('easyPieChart').find('canvas').remove();
       // var chart = window.chart = new EasyPieChart(document.querySelector('.total-chart .chart'), {
       $('.total-chart .chart').easyPieChart({
         easing: 'easeOutElastic',
@@ -90,8 +88,8 @@ $(function () {
         barColor: '#f28888',
         trackColor: '#edc0c0',
         scaleColor: false,
-        lineWidth: 18,
-        trackWidth: 18,
+        lineWidth: lWidth,
+        trackWidth: tWidth,
         lineCap: 'round',
         size: pieSize,
         onStep: function (from, to, percent) {
@@ -105,9 +103,9 @@ $(function () {
   //---each chart
   if (winWidth <= 950) {
     lWidth = 5;
-    tWidth = 4;
+    tWidth = 5;
   } else {
-    lWidth = 10;
+    lWidth = 8;
     tWidth = 8;
   }
 
@@ -136,8 +134,8 @@ $(function () {
           barColor: value.bColor,
           trackColor: value.tColor,
           scaleColor: false,
-          lineWidth: 5,
-          trackWidth: 5,
+          lineWidth: lWidth,
+          trackWidth: tWidth,
           lineCap: 'round',
           size: 110,
           onStep: function (from, to, percent) {
