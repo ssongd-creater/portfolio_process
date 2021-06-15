@@ -464,7 +464,7 @@ div.total-chart .chart canvas {
   font-size: 12px;
 }
 
-.table-ui .each-contents .each-btns a {
+.table-ui .each-contents .each-btns button {
   width: 25%;
   display: block;
   border: 1px solid #fff;
@@ -476,7 +476,7 @@ div.total-chart .chart canvas {
   text-align: center;
 }
 
-.table-ui .each-contents .each-btns a.active {
+.table-ui .each-contents .each-btns button.active {
   color: #ff9062;
   background: #fff;
   border: 1px solid #ff9062;
@@ -708,7 +708,8 @@ div.total-chart .chart canvas {
   display: flex;
 }
 
-.detail-board .board-btns a {
+.detail-board .board-btns a,
+.board-table-btn .more-btn {
   background: #ff9062;
   display: block;
   padding: 8px 15px;
@@ -719,7 +720,9 @@ div.total-chart .chart canvas {
   transition: all 0.4s;
 }
 
-.detail-board .board-btns a:hover {
+.detail-board .board-btns a:hover,
+.detail-board .board-btns a.active,
+.board-table-btn .more-btn:hover {
   background: #fff;
   color: #ff9062;
 }
@@ -750,12 +753,14 @@ div.total-chart .chart canvas {
 
 .board-table li.board-contents span {
   color: #555;
-  padding: 5px 10px;
+  padding: 10px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
+.board-table li:nth-child(odd) {
+  background: #f0f0f0;
+}
 .board-table li.board-contents span:nth-child(3) {
   justify-content: flex-start;
 }
@@ -799,4 +804,10 @@ div.total-chart .chart canvas {
 }
 .board-table li span:nth-child(5) {
   width: 10%;
+}
+
+.board-table-btn {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
 }
