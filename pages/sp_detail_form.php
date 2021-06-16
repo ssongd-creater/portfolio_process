@@ -142,7 +142,38 @@
 
   });
   </script>
+  <script>
+  const pathName = window.location.href;
+  const tabBtns = document.querySelectorAll('.board-btns a');
+  const tabElements = ['all', 'database', 'api', 'renewal', 'planning'];
+  //console.log(tabBtns);
 
+
+  for (let i = 0; i < tabBtns.length; i++) {
+    tabBtns[i].classList.remove('active');
+    if (pathName.includes(tabElements[i])) {
+      tabBtns[i].classList.add('active');
+    };
+  };
+
+
+
+  // tabBtns.forEach(btn => {
+  //   btn.classList.remove('active');
+  // });
+
+  // if (pathName.includes('all')) {
+  //   tabBtns[0].classList.add('active');
+  // } else if (pathName.includes('database')) {
+  //   tabBtns[1].classList.add('active');
+  // } else if (pathName.includes('api')) {
+  //   tabBtns[2].classList.add('active');
+  // } else if (pathName.includes('renewal')) {
+  //   tabBtns[3].classList.add('active');
+  // } else if (pathName.includes('planning')) {
+  //   tabBtns[4].classList.add('active');
+  // }
+  </script>
 </body>
 
 </html>

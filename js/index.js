@@ -137,7 +137,7 @@ $(function () {
           lineWidth: lWidth,
           trackWidth: tWidth,
           lineCap: 'round',
-          size: 110,
+          size: eachSize,
           onStep: function (from, to, percent) {
             this.el.children[0].innerHTML = Math.round(percent);
           }
