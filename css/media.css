@@ -144,9 +144,13 @@
     height: 100%;
     border-radius: 15px;
   }
-
+  /* Header CSS Code */
   header {
-    padding: 15px;
+    padding: 15px 25px;
+  }
+
+  .custom-font {
+    font-size: 50px;
   }
   /* Graph-ui Content Style Code */
   .graph-ui {
@@ -181,11 +185,19 @@
     height: 250px;
   }
 
+  .graph-ui .detail-board {
+    max-height: 320px;
+  }
+
   /* Table-ui Content Style Code */
   .table-ui {
     width: 100%;
     height: auto;
     margin-top: 10px;
+  }
+
+  .table-ui .each-contents .each-btns button {
+    font-size: 12px;
   }
 
   div.total-txt {
@@ -280,8 +292,13 @@
 
 @media screen and (max-width: 450px) {
   /* Detasil Page Style Code */
+  .graph-ui.detail .each-pofol {
+    padding: 5px 0;
+  }
+
   .graph-ui.detail .each-pofol .each-graph div {
-    width: 50%;
+    width: calc(50% - 5px);
+    margin: 5px 0;
   }
 
   .board-table li.board-contents span a.del-btn.txt {
