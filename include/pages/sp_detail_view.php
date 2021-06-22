@@ -67,41 +67,64 @@
         </div>
 
         <div class="detail-board">
-          <div class="board-btns">
-            <a href="?key=all" class="active">All</a>
-            <a href="?key=database">Database</a>
-            <a href="?key=thermometer-half">API</a>
-            <a href="?key=clone">Renewal</a>
-            <a href="?key=bar-chart-o">Planning</a>
+
+          <?php
+            $page_num = $_GET['pageNum'];
+            //echo $page_num;
+
+            include $_SERVER["DOCUMENT_ROOT"]."/connect/db_conn.php";
+            $sql = "SELECT * FROM sp_table WhERE SP_idx = $page_num";
+
+            $detail_result = mysqli_query($dbConn, $sql);
+            $detail_row = mysqli_fetch_array($detail_result);
+
+
+            $detail_tit = $detail_row['SP_tit'];
+            $detail_num = $detail_row['SP_idx'];
+            $detail_cate = $detail_row['SP_cate'];
+            $detail_con = $detail_row['SP_con'];
+            $detail_reg = $detail_row['SP_reg'];
+
+            //echo $detail_num, $detail_reg;
+          ?>
+        <form action="/schedule/php/update_details.php">
+          <div class="detail-title">
+            <h2><?=$detail_tit?></h2>
+            <input type="text" value="<?=$detail_tit?>" class="hidden-tit" name="update_tit">
+            <input type="hidden" value="<?=$detail_num?>" name="update_num">
           </div>
 
-          <div class="board-table">
+          <div class="board-table detail-view">
             <ul>
               <li class="board-title">
                 <span>번호</span>
                 <span>분류</span>
-                <span>제목</span>
+                <span>내용</span>
                 <span>등록일</span>
-                <span></span>
               </li>
 
-              <?php
-                $include_path = $_GET['key'];
-                include $_SERVER["DOCUMENT_ROOT"].'/schedule/include/tabs/all.php';
-              ?>
+
+              <li class="board-contents">
+                <span><?=$detail_num?></span>
+                <span><?=$detail_cate?></span>
+                <span>
+                  <em><?=$detail_con?></em>
+                  <textarea class="hidden-con" name="update_con"><?=$detail_con?></textarea>
+                </span>
+                <span><?=$detail_reg?></span>
+              </li>
+
+              
+
             </ul>
           </div>
           <!-- End of board-table -->
-          <div class="board-table-btn">
-            <!-- <form action="#" class="search-box">
-              <select>
-                <option value="">아이디</option>
-                <option value="">제목</option>
-              </select>
-              <input type="text">
-              <button type="submit"><i class="fa fa-search"></i></button>
-            </form> -->
-            <button type="button" class="more-btn">더보기</button>
+          <div class="send-update">
+            <button type="submit">수정 입력</button>
+          </div>
+        </form>
+          <div class="detail-btns">
+            <button type="button" class="update-btn">수정</button>
           </div>
         </div>
 
@@ -127,53 +150,23 @@
   <script src="/schedule/js/jquery.index.js"></script>
 
   <script>
-  $(function() {
-    //더보기 버튼 기능
-    $(".board-contents").hide();
-    //board-contents 안에 내용들이 모두 사라짐
-    $(".board-contents").slice(0, 5).show();
-    //board-contents 안에 0번째부터 5개를 slice 해서 show로 보여줌
-
-    $(".more-btn").click(function() {
-      //console.log($(".board-contents:hidden").length);
-      $(".board-contents:hidden").slice(0, 5).show();
+    $(function(){
+      $(".update-btn").click(function(){
+        $(".detail-view em, .detail-title h2").hide();
+        $(this).toggleClass("on");
+        
+        if($(this).hasClass("on")){
+          $(".hidden-tit, .hidden-con, .send-update").show();
+          $(this).text('수정 취소');
+        } else {
+          $(".detail-view em, .detail-title h2").show();
+          $(".hidden-tit, .hidden-con, .send-update").hide();
+          $(this).text('수정');
+        };
+      });
     });
-    //테이블 탭 활성화 기능
-
-  });
   </script>
-  <script>
-  const pathName = window.location.href;
-  const tabBtns = document.querySelectorAll('.board-btns a');
-  const tabElements = ['all', 'database', 'thermometer-half', 'clone', 'bar-chart-o'];
-  //console.log(tabBtns);
 
-
-  for (let i = 0; i < tabBtns.length; i++) {
-    tabBtns[i].classList.remove('active');
-    if (pathName.includes(tabElements[i])) {
-      tabBtns[i].classList.add('active');
-    };
-  };
-
-
-
-  // tabBtns.forEach(btn => {
-  //   btn.classList.remove('active');
-  // });
-
-  // if (pathName.includes('all')) {
-  //   tabBtns[0].classList.add('active');
-  // } else if (pathName.includes('database')) {
-  //   tabBtns[1].classList.add('active');
-  // } else if (pathName.includes('api')) {
-  //   tabBtns[2].classList.add('active');
-  // } else if (pathName.includes('renewal')) {
-  //   tabBtns[3].classList.add('active');
-  // } else if (pathName.includes('planning')) {
-  //   tabBtns[4].classList.add('active');
-  // }
-  </script>
 </body>
 
 </html>
