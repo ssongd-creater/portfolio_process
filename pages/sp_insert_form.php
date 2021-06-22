@@ -94,12 +94,17 @@
       <?php
         include $_SERVER['DOCUMENT_ROOT']."/schedule/include/table_ui.php";
       ?>
+
     </div>
     <!-- End of Main Dashboard Frame -->
+    <?php
+        include $_SERVER['DOCUMENT_ROOT']."/schedule/include/modal.php";
+      ?>
   </div>
 
   <!-- Jquery Framework Load -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="/schedule/js/modalAjax.js"></script>
   <!-- Plugins Load -->
   <script src="/schedule/lib/js/lightslider.js"></script>
   <script src="/schedule/lib/js/jquery.easypiechart.min.js"></script>

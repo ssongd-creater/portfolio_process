@@ -87,44 +87,45 @@
 
             //echo $detail_num, $detail_reg;
           ?>
-        <form action="/schedule/php/update_details.php">
-          <div class="detail-title">
-            <h2><?=$detail_tit?></h2>
-            <input type="text" value="<?=$detail_tit?>" class="hidden-tit" name="update_tit">
-            <input type="hidden" value="<?=$detail_num?>" name="update_num">
-          </div>
+          <form action="/schedule/php/update_details.php">
+            <div class="detail-title">
+              <h2><?=$detail_tit?></h2>
+              <input type="text" value="<?=$detail_tit?>" class="hidden-tit" name="update_tit">
+              <input type="hidden" value="<?=$detail_num?>" name="update_num">
+            </div>
 
-          <div class="board-table detail-view">
-            <ul>
-              <li class="board-title">
-                <span>번호</span>
-                <span>분류</span>
-                <span>내용</span>
-                <span>등록일</span>
-              </li>
+            <div class="board-table detail-view">
+              <ul>
+                <li class="board-title">
+                  <span>번호</span>
+                  <span>분류</span>
+                  <span>내용</span>
+                  <span>등록일</span>
+                </li>
 
 
-              <li class="board-contents">
-                <span><?=$detail_num?></span>
-                <span><?=$detail_cate?></span>
-                <span>
-                  <em><?=$detail_con?></em>
-                  <textarea class="hidden-con" name="update_con"><?=$detail_con?></textarea>
-                </span>
-                <span><?=$detail_reg?></span>
-              </li>
+                <li class="board-contents">
+                  <span><?=$detail_num?></span>
+                  <span><?=$detail_cate?></span>
+                  <span>
+                    <em><?=$detail_con?></em>
+                    <textarea class="hidden-con" name="update_con"><?=$detail_con?></textarea>
+                  </span>
+                  <span><?=$detail_reg?></span>
+                </li>
 
-              
 
-            </ul>
-          </div>
-          <!-- End of board-table -->
-          <div class="send-update">
-            <button type="submit">수정 입력</button>
-          </div>
-        </form>
+
+              </ul>
+            </div>
+            <!-- End of board-table -->
+            <div class="send-update">
+              <button type="submit">수정 입력</button>
+            </div>
+          </form>
           <div class="detail-btns">
             <button type="button" class="update-btn">수정</button>
+            <button type="button" class="delete-btn">삭제</button>
           </div>
         </div>
 
@@ -132,6 +133,9 @@
 
     </div>
     <!-- End of Main Dashboard Frame -->
+    <?php
+      include $_SERVER['DOCUMENT_ROOT']."/schedule/include/modal.php";
+    ?>
   </div>
 
 
@@ -150,21 +154,32 @@
   <script src="/schedule/js/jquery.index.js"></script>
 
   <script>
-    $(function(){
-      $(".update-btn").click(function(){
-        $(".detail-view em, .detail-title h2").hide();
-        $(this).toggleClass("on");
-        
-        if($(this).hasClass("on")){
-          $(".hidden-tit, .hidden-con, .send-update").show();
-          $(this).text('수정 취소');
-        } else {
-          $(".detail-view em, .detail-title h2").show();
-          $(".hidden-tit, .hidden-con, .send-update").hide();
-          $(this).text('수정');
-        };
-      });
+  $(function() {
+    //수정 버튼 클릭 이벤트
+    $(".update-btn").click(function() {
+      $(".detail-view em, .detail-title h2").hide();
+      $(this).toggleClass("on");
+
+      if ($(this).hasClass("on")) {
+        $(".hidden-tit, .hidden-con, .send-update").show();
+        $(this).text('수정 취소');
+      } else {
+        $(".detail-view em, .detail-title h2").show();
+        $(".hidden-tit, .hidden-con, .send-update").hide();
+        $(this).text('수정');
+      };
     });
+    //삭제 버튼 클릭 이벤트
+    $(".delete-btn").click(function() {
+      const isCheck = confirm('정말 삭제하시겠습니까?');
+      //alert(isCheck);
+      if (isCheck === false) {
+        return false;
+      } else {
+        location.href = '/schedule/php/sp_delete.php?del_idx=<?=$detail_num?>';
+      }
+    })
+  });
   </script>
 
 </body>

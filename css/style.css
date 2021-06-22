@@ -346,8 +346,16 @@ header .sign-out {
 .graph-ui .each-pofol .each-title {
   width: 100%;
   height: 25%;
+  display: flex;
+  align-items: center;
 }
 
+.graph-ui .each-pofol .each-title h3 {
+  font-weight: 300;
+  font-size: 18px;
+  padding-left: 10px;
+  border-left: 3px solid #7c41f5;
+}
 .graph-ui .each-pofol .each-graph {
   width: 100%;
   height: 75%;
@@ -927,40 +935,41 @@ div.total-chart .chart canvas {
   justify-content: center;
 }
 
-
 /* Detail View Page Style Code */
-.detail-view em{
+.detail-view em {
   font-style: normal;
 }
 
-.hidden-tit, .hidden-con, .send-update{
-  display:none;
+.hidden-tit,
+.hidden-con,
+.send-update {
+  display: none;
 }
 
-.detail-title h2{
-  font-size:18px;
-  font-weight:300;
-  padding-left:20px;
-  border-left:3px solid #ff9062;
+.detail-title h2 {
+  font-size: 18px;
+  font-weight: 300;
+  padding-left: 20px;
+  border-left: 3px solid #ff9062;
 }
 
-.detail-title .hidden-tit{
-  padding:10px;
-  color:#777;
-  border:1px solid #f0f0f0;
+.detail-title .hidden-tit {
+  padding: 10px;
+  color: #777;
+  border: 1px solid #f0f0f0;
 }
 
-.detail-title .hidden-tit:focus{
-  border:1px solid #ff9062;
+.detail-title .hidden-tit:focus {
+  border: 1px solid #ff9062;
 }
 
-.board-contents .hidden-con{
-  width:100%;
-  height:100px;
-  border:1px solid #f0f0f0;
-  color:#999;
-  resize:none;
-  padding:10px;
+.board-contents .hidden-con {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #f0f0f0;
+  color: #999;
+  resize: none;
+  padding: 10px;
   font-family: "Roboto", "Noto Sans KR", sans-serif;
 }
 .board-table li span:nth-child(1) {
@@ -976,32 +985,33 @@ div.total-chart .chart canvas {
   width: 20%;
 }
 
-.detail-btns{
-  width:100%;
-  height:auto;
-  display:flex;
+.detail-btns {
+  width: 100%;
+  height: auto;
+  display: flex;
   justify-content: center;
 }
 
-.detail-btns button, .send-update button{
-  border:1px solid #ff9062;
-  background:#ff9062;
-  color:#fff;
-  padding:5px 15px;
-  transition:all 0.4s;
+.detail-btns button,
+.send-update button {
+  border: 1px solid #ff9062;
+  background: #ff9062;
+  color: #fff;
+  padding: 5px 15px;
+  transition: all 0.4s;
+  margin: 0 3px;
 }
 
-.detail-btns button:hover{
-  background:#fff;
-  color:#555;
+.detail-btns button:hover {
+  background: #fff;
+  color: #555;
 }
 
-.send-update{
-  width:100%;
+.send-update {
+  width: 100%;
   height: auto;
-  padding:0 0 10px 0;
-  margin:0 0 10px 0;
-  border:1px solid #f0f0f0;
+  padding: 0 0 10px 0;
+  margin: 0 0 10px 0;
+  border: 1px solid #f0f0f0;
   text-align: center;
 }
-
