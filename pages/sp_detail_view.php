@@ -78,7 +78,6 @@
             $detail_result = mysqli_query($dbConn, $sql);
             $detail_row = mysqli_fetch_array($detail_result);
 
-
             $detail_tit = $detail_row['SP_tit'];
             $detail_num = $detail_row['SP_idx'];
             $detail_cate = $detail_row['SP_cate'];
@@ -103,7 +102,6 @@
                   <span>등록일</span>
                 </li>
 
-
                 <li class="board-contents">
                   <span><?=$detail_num?></span>
                   <span><?=$detail_cate?></span>
@@ -113,11 +111,10 @@
                   </span>
                   <span><?=$detail_reg?></span>
                 </li>
-
-
-
               </ul>
             </div>
+
+
             <!-- End of board-table -->
             <div class="send-update">
               <button type="submit">수정 입력</button>
