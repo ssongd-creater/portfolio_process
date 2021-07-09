@@ -5,6 +5,9 @@
 ![Schedule-Page-2](https://user-images.githubusercontent.com/84562720/125007875-3a25ae00-e09c-11eb-8138-b1908ce42adc.png)
 
 
+---
+
+
 - My Schedule은 각 카테고리 별 달성률 표시 및 각각의 달성률을 전체 그래프로 표현 가능
 - 진행상황을 작성하여 각 카테고리 별 일정을 기록
 - 진행상황을 게시판 형식으로 확인이 가능
